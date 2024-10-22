@@ -2,6 +2,7 @@ apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
   name: httpd-frontend
+  namespace: test
   labels:
     app: httpd-frontend
 spec:
@@ -44,6 +45,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: test
   name: http-port
   labels:
     app: httpd-frontend
@@ -59,6 +61,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: test
   name: https-port
   labels:
     app: httpd-frontend
@@ -74,6 +77,7 @@ spec:
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
+  namespace: test
   labels:
     app: httpd-frontend
   managedFields:
